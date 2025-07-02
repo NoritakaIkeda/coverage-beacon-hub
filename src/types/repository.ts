@@ -39,6 +39,7 @@ export interface FunctionData {
   testCoverage: TestCoverageInfo[];
   branchCoverage?: BranchCoverageInfo[];
   riskLevel: 'low' | 'medium' | 'high';
+  naturalAnalysis?: NaturalLanguageAnalysis;
 }
 
 export interface TestCoverageInfo {
@@ -52,4 +53,14 @@ export interface BranchCoverageInfo {
   condition: string;
   isCovered: boolean;
   testCase?: string;
+}
+
+export interface NaturalLanguageAnalysis {
+  complexityReason: string;
+  businessBackground: string;
+  technicalConstraints: string;
+  testStrategy: string;
+  behaviorDescription: string;
+  riskAssessment: string;
+  strategicEvaluation: string;
 }

@@ -9,6 +9,7 @@ import { Progress } from "@/components/ui/progress";
 import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FunctionData } from "@/types/repository";
+import NaturalAnalysis from "./NaturalAnalysis";
 
 interface CodeAnalysisProps {
   functions: FunctionData[];
@@ -75,7 +76,7 @@ const CodeAnalysis = ({ functions }: CodeAnalysisProps) => {
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">
             <FileText className="w-5 h-5" />
-            <span>Code Analysis & Risk Assessment</span>
+            <span>コード分析・リスク評価</span>
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -158,8 +159,8 @@ const CodeAnalysis = ({ functions }: CodeAnalysisProps) => {
       {filteredAndSortedFunctions.length === 0 && (
         <div className="text-center py-12">
           <Filter className="w-12 h-12 text-slate-300 mx-auto mb-4" />
-          <h3 className="text-lg font-medium text-slate-900 mb-2">No functions found</h3>
-          <p className="text-slate-600">Try adjusting your search or filter criteria.</p>
+          <h3 className="text-lg font-medium text-slate-900 mb-2">関数が見つかりません</h3>
+          <p className="text-slate-600">検索条件またはフィルター条件を調整してください。</p>
         </div>
       )}
     </div>
@@ -246,12 +247,25 @@ const FunctionAnalysisCard = ({ functionData }: { functionData: FunctionData }) 
         <Progress value={functionData.coverage} className="mb-4" />
 
         {isExpanded && (
-          <Tabs defaultValue="intent" className="mt-4">
-            <TabsList className="grid w-full grid-cols-3">
-              <TabsTrigger value="intent">Business Intent</TabsTrigger>
-              <TabsTrigger value="tests">Test Coverage</TabsTrigger>
-              <TabsTrigger value="branches">Branch Analysis</TabsTrigger>
+          <Tabs defaultValue="natural" className="mt-4">
+            <TabsList className="grid w-full grid-cols-4">
+              <TabsTrigger value="natural">自然言語解析</TabsTrigger>
+              <TabsTrigger value="intent">ビジネス意図</TabsTrigger>
+              <TabsTrigger value="tests">テストカバレッジ</TabsTrigger>
+              <TabsTrigger value="branches">分岐解析</TabsTrigger>
             </TabsList>
+
+            <TabsContent value="natural" className="mt-4">
+              <NaturalAnalysis
+                functionName={functionData.name}
+                complexity={functionData.complexity}
+                analysis={functionData.naturalAnalysis}
+                onUpdateAnalysis={(analysis) => {
+                  // In a real app, this would update the backend
+                  console.log('Updated analysis for', functionData.name, analysis);
+                }}
+              />
+            </TabsContent>
 
             <TabsContent value="intent" className="mt-4 space-y-4">
               <div>

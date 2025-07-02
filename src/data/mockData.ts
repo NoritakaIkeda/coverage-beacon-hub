@@ -1,4 +1,3 @@
-
 import { Repository } from "@/types/repository";
 
 export const mockRepositories: Repository[] = [
@@ -37,7 +36,16 @@ export const mockRepositories: Repository[] = [
         riskLevel: 'low',
         testCoverage: [
           { testFile: "hooks.test.js", testCase: "should update state correctly", coverageType: "unit", coveredLines: [142, 143, 144] }
-        ]
+        ],
+        naturalAnalysis: {
+          complexityReason: "状態更新とバッチング処理により複数の分岐が存在するが、React の基本的なフック実装として必要な複雑さ",
+          businessBackground: "コンポーネントの状態管理を簡潔に行うためのAPIを提供。開発者体験の向上が主目的",
+          technicalConstraints: "React の内部スケジューラーとの整合性を保ちつつ、パフォーマンスを維持する必要がある",
+          testStrategy: "正常な状態更新、バッチ処理、初期値設定の各シナリオを網羅的にテスト。振る舞いベースで記述",
+          behaviorDescription: "現在の状態値と状態更新関数を返し、コンポーネントの再レンダリングをトリガーする",
+          riskAssessment: "十分にテストされており、変更リスクは低い。ただし内部実装変更時は広範囲への影響があり得る",
+          strategicEvaluation: "React の基幹機能として適切に保証されている。現状の実装・テスト戦略を維持推奨"
+        }
       },
       { 
         name: "useEffect", 
@@ -71,7 +79,16 @@ export const mockRepositories: Repository[] = [
         isTested: false, 
         lineNumber: 1204,
         riskLevel: 'high',
-        testCoverage: []
+        testCoverage: [],
+        naturalAnalysis: {
+          complexityReason: "Virtual DOM の差分計算処理で、要素の追加・削除・移動・更新の全パターンを考慮する必要があり、非常に高い複雑度",
+          businessBackground: "React のパフォーマンスの要である差分レンダリングを実現。ユーザー体験に直結する重要機能",
+          technicalConstraints: "メモリ効率性とCPU使用量のバランス、既存のファイバーアーキテクチャとの互換性が必要",
+          testStrategy: "現在テストが不在で高リスク。要素追加、削除、順序変更、プロパティ変更の各ケースでテストが必要",
+          behaviorDescription: "旧Virtual DOMツリーと新Virtual DOMツリーを比較し、最小限のDOM操作で差分を適用する",
+          riskAssessment: "【高リスク】テスト不足により、変更時に予期しない副作用が発生する可能性が高い",
+          strategicEvaluation: "最優先でテスト整備が必要。段階的リファクタリングと統合テストの追加を強く推奨"
+        }
       },
       { 
         name: "updateFunctionComponent", 
