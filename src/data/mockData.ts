@@ -27,14 +27,96 @@ export const mockRepositories: Repository[] = [
       { category: "DOM", coverage: 91, tested: 421, total: 455 }
     ],
     functions: [
-      { name: "useState", complexity: 8, coverage: 95, category: "Hooks", isTested: true, lineNumber: 142 },
-      { name: "useEffect", complexity: 12, coverage: 92, category: "Hooks", isTested: true, lineNumber: 178 },
-      { name: "createElement", complexity: 15, coverage: 88, category: "Core", isTested: true, lineNumber: 89 },
-      { name: "reconcileChildren", complexity: 23, coverage: 0, category: "Core", isTested: false, lineNumber: 1204 },
-      { name: "updateFunctionComponent", complexity: 18, coverage: 85, category: "Components", isTested: true, lineNumber: 567 },
-      { name: "commitMutationEffects", complexity: 28, coverage: 0, category: "DOM", isTested: false, lineNumber: 2134 },
-      { name: "scheduleWork", complexity: 21, coverage: 72, category: "Core", isTested: true, lineNumber: 892 },
-      { name: "flushPassiveEffects", complexity: 19, coverage: 0, category: "Hooks", isTested: false, lineNumber: 1678 }
+      { 
+        name: "useState", 
+        complexity: 8, 
+        coverage: 95, 
+        category: "Hooks", 
+        isTested: true, 
+        lineNumber: 142,
+        riskLevel: 'low',
+        testCoverage: [
+          { testFile: "hooks.test.js", testCase: "should update state correctly", coverageType: "unit", coveredLines: [142, 143, 144] }
+        ]
+      },
+      { 
+        name: "useEffect", 
+        complexity: 12, 
+        coverage: 92, 
+        category: "Hooks", 
+        isTested: true, 
+        lineNumber: 178,
+        riskLevel: 'medium',
+        testCoverage: [
+          { testFile: "hooks.test.js", testCase: "should handle effect cleanup", coverageType: "unit", coveredLines: [178, 179, 180, 185] }
+        ]
+      },
+      { 
+        name: "createElement", 
+        complexity: 15, 
+        coverage: 88, 
+        category: "Core", 
+        isTested: true, 
+        lineNumber: 89,
+        riskLevel: 'medium',
+        testCoverage: [
+          { testFile: "core.test.js", testCase: "should create element with props", coverageType: "unit", coveredLines: [89, 90, 91, 95] }
+        ]
+      },
+      { 
+        name: "reconcileChildren", 
+        complexity: 23, 
+        coverage: 0, 
+        category: "Core", 
+        isTested: false, 
+        lineNumber: 1204,
+        riskLevel: 'high',
+        testCoverage: []
+      },
+      { 
+        name: "updateFunctionComponent", 
+        complexity: 18, 
+        coverage: 85, 
+        category: "Components", 
+        isTested: true, 
+        lineNumber: 567,
+        riskLevel: 'medium',
+        testCoverage: [
+          { testFile: "components.test.js", testCase: "should update function component", coverageType: "integration", coveredLines: [567, 568, 570, 575] }
+        ]
+      },
+      { 
+        name: "commitMutationEffects", 
+        complexity: 28, 
+        coverage: 0, 
+        category: "DOM", 
+        isTested: false, 
+        lineNumber: 2134,
+        riskLevel: 'high',
+        testCoverage: []
+      },
+      { 
+        name: "scheduleWork", 
+        complexity: 21, 
+        coverage: 72, 
+        category: "Core", 
+        isTested: true, 
+        lineNumber: 892,
+        riskLevel: 'high',
+        testCoverage: [
+          { testFile: "scheduler.test.js", testCase: "should schedule work correctly", coverageType: "unit", coveredLines: [892, 893, 900] }
+        ]
+      },
+      { 
+        name: "flushPassiveEffects", 
+        complexity: 19, 
+        coverage: 0, 
+        category: "Hooks", 
+        isTested: false, 
+        lineNumber: 1678,
+        riskLevel: 'high',
+        testCoverage: []
+      }
     ]
   },
   {
@@ -61,10 +143,50 @@ export const mockRepositories: Repository[] = [
       { category: "Utils", coverage: 69, tested: 214, total: 300 }
     ],
     functions: [
-      { name: "reactive", complexity: 16, coverage: 88, category: "Reactivity", isTested: true, lineNumber: 234 },
-      { name: "compile", complexity: 24, coverage: 0, category: "Compiler", isTested: false, lineNumber: 567 },
-      { name: "mount", complexity: 19, coverage: 85, category: "Runtime", isTested: true, lineNumber: 123 },
-      { name: "patch", complexity: 22, coverage: 0, category: "Runtime", isTested: false, lineNumber: 889 }
+      { 
+        name: "reactive", 
+        complexity: 16, 
+        coverage: 88, 
+        category: "Reactivity", 
+        isTested: true, 
+        lineNumber: 234,
+        riskLevel: 'medium',
+        testCoverage: [
+          { testFile: "reactivity.test.js", testCase: "should make object reactive", coverageType: "unit", coveredLines: [234, 235, 240] }
+        ]
+      },
+      { 
+        name: "compile", 
+        complexity: 24, 
+        coverage: 0, 
+        category: "Compiler", 
+        isTested: false, 
+        lineNumber: 567,
+        riskLevel: 'high',
+        testCoverage: []
+      },
+      { 
+        name: "mount", 
+        complexity: 19, 
+        coverage: 85, 
+        category: "Runtime", 
+        isTested: true, 
+        lineNumber: 123,
+        riskLevel: 'medium',
+        testCoverage: [
+          { testFile: "runtime.test.js", testCase: "should mount component", coverageType: "integration", coveredLines: [123, 124, 130] }
+        ]
+      },
+      { 
+        name: "patch", 
+        complexity: 22, 
+        coverage: 0, 
+        category: "Runtime", 
+        isTested: false, 
+        lineNumber: 889,
+        riskLevel: 'high',
+        testCoverage: []
+      }
     ]
   },
   {
@@ -91,10 +213,52 @@ export const mockRepositories: Repository[] = [
       { category: "Response", coverage: 91, tested: 50, total: 54 }
     ],
     functions: [
-      { name: "app.get", complexity: 6, coverage: 98, category: "Router", isTested: true, lineNumber: 45 },
-      { name: "router.use", complexity: 8, coverage: 95, category: "Middleware", isTested: true, lineNumber: 123 },
-      { name: "req.query", complexity: 4, coverage: 100, category: "Request", isTested: true, lineNumber: 234 },
-      { name: "res.json", complexity: 7, coverage: 0, category: "Response", isTested: false, lineNumber: 345 }
+      { 
+        name: "app.get", 
+        complexity: 6, 
+        coverage: 98, 
+        category: "Router", 
+        isTested: true, 
+        lineNumber: 45,
+        riskLevel: 'low',
+        testCoverage: [
+          { testFile: "router.test.js", testCase: "should handle GET requests", coverageType: "integration", coveredLines: [45, 46, 47] }
+        ]
+      },
+      { 
+        name: "router.use", 
+        complexity: 8, 
+        coverage: 95, 
+        category: "Middleware", 
+        isTested: true, 
+        lineNumber: 123,
+        riskLevel: 'low',
+        testCoverage: [
+          { testFile: "middleware.test.js", testCase: "should apply middleware", coverageType: "unit", coveredLines: [123, 124, 125] }
+        ]
+      },
+      { 
+        name: "req.query", 
+        complexity: 4, 
+        coverage: 100, 
+        category: "Request", 
+        isTested: true, 
+        lineNumber: 234,
+        riskLevel: 'low',
+        testCoverage: [
+          { testFile: "request.test.js", testCase: "should parse query parameters", coverageType: "unit", coveredLines: [234, 235] }
+        ]
+      },
+      { 
+        name: "res.json", 
+        complexity: 7, 
+        coverage: 0, 
+        category: "Response", 
+        isTested: false, 
+        lineNumber: 345,
+        riskLevel: 'low',
+        testCoverage: []
+      }
     ]
   },
   {
@@ -122,10 +286,50 @@ export const mockRepositories: Repository[] = [
       { category: "Math", coverage: 78, tested: 167, total: 214 }
     ],
     functions: [
-      { name: "map", complexity: 9, coverage: 85, category: "Array", isTested: true, lineNumber: 1234 },
-      { name: "reduce", complexity: 12, coverage: 0, category: "Array", isTested: false, lineNumber: 1567 },
-      { name: "debounce", complexity: 18, coverage: 72, category: "Function", isTested: true, lineNumber: 2345 },
-      { name: "cloneDeep", complexity: 25, coverage: 0, category: "Object", isTested: false, lineNumber: 3456 }
+      { 
+        name: "map", 
+        complexity: 9, 
+        coverage: 85, 
+        category: "Array", 
+        isTested: true, 
+        lineNumber: 1234,
+        riskLevel: 'low',
+        testCoverage: [
+          { testFile: "array.test.js", testCase: "should map array elements", coverageType: "unit", coveredLines: [1234, 1235, 1240] }
+        ]
+      },
+      { 
+        name: "reduce", 
+        complexity: 12, 
+        coverage: 0, 
+        category: "Array", 
+        isTested: false, 
+        lineNumber: 1567,
+        riskLevel: 'medium',
+        testCoverage: []
+      },
+      { 
+        name: "debounce", 
+        complexity: 18, 
+        coverage: 72, 
+        category: "Function", 
+        isTested: true, 
+        lineNumber: 2345,
+        riskLevel: 'medium',
+        testCoverage: [
+          { testFile: "function.test.js", testCase: "should debounce function calls", coverageType: "unit", coveredLines: [2345, 2346, 2350] }
+        ]
+      },
+      { 
+        name: "cloneDeep", 
+        complexity: 25, 
+        coverage: 0, 
+        category: "Object", 
+        isTested: false, 
+        lineNumber: 3456,
+        riskLevel: 'high',
+        testCoverage: []
+      }
     ]
   },
   {
@@ -152,10 +356,52 @@ export const mockRepositories: Repository[] = [
       { category: "Utils", coverage: 91, tested: 62, total: 69 }
     ],
     functions: [
-      { name: "request", complexity: 14, coverage: 95, category: "Core", isTested: true, lineNumber: 234 },
-      { name: "get", complexity: 7, coverage: 98, category: "Core", isTested: true, lineNumber: 345 },
-      { name: "post", complexity: 8, coverage: 0, category: "Core", isTested: false, lineNumber: 456 },
-      { name: "interceptRequest", complexity: 16, coverage: 87, category: "Interceptors", isTested: true, lineNumber: 567 }
+      { 
+        name: "request", 
+        complexity: 14, 
+        coverage: 95, 
+        category: "Core", 
+        isTested: true, 
+        lineNumber: 234,
+        riskLevel: 'medium',
+        testCoverage: [
+          { testFile: "core.test.js", testCase: "should make HTTP request", coverageType: "integration", coveredLines: [234, 235, 240, 245] }
+        ]
+      },
+      { 
+        name: "get", 
+        complexity: 7, 
+        coverage: 98, 
+        category: "Core", 
+        isTested: true, 
+        lineNumber: 345,
+        riskLevel: 'low',
+        testCoverage: [
+          { testFile: "core.test.js", testCase: "should handle GET requests", coverageType: "unit", coveredLines: [345, 346] }
+        ]
+      },
+      { 
+        name: "post", 
+        complexity: 8, 
+        coverage: 0, 
+        category: "Core", 
+        isTested: false, 
+        lineNumber: 456,
+        riskLevel: 'low',
+        testCoverage: []
+      },
+      { 
+        name: "interceptRequest", 
+        complexity: 16, 
+        coverage: 87, 
+        category: "Interceptors", 
+        isTested: true, 
+        lineNumber: 567,
+        riskLevel: 'medium',
+        testCoverage: [
+          { testFile: "interceptors.test.js", testCase: "should intercept requests", coverageType: "unit", coveredLines: [567, 568, 570] }
+        ]
+      }
     ]
   },
   {
@@ -183,10 +429,50 @@ export const mockRepositories: Repository[] = [
       { category: "Utils", coverage: 69, tested: 497, total: 721 }
     ],
     functions: [
-      { name: "compile", complexity: 28, coverage: 0, category: "Compiler", isTested: false, lineNumber: 1234 },
-      { name: "run", complexity: 19, coverage: 85, category: "Compiler", isTested: true, lineNumber: 2345 },
-      { name: "applyPlugin", complexity: 12, coverage: 78, category: "Plugins", isTested: true, lineNumber: 3456 },
-      { name: "resolveModule", complexity: 24, coverage: 0, category: "Runtime", isTested: false, lineNumber: 4567 }
+      { 
+        name: "compile", 
+        complexity: 28, 
+        coverage: 0, 
+        category: "Compiler", 
+        isTested: false, 
+        lineNumber: 1234,
+        riskLevel: 'high',
+        testCoverage: []
+      },
+      { 
+        name: "run", 
+        complexity: 19, 
+        coverage: 85, 
+        category: "Compiler", 
+        isTested: true, 
+        lineNumber: 2345,
+        riskLevel: 'medium',
+        testCoverage: [
+          { testFile: "compiler.test.js", testCase: "should run compilation", coverageType: "integration", coveredLines: [2345, 2346, 2350, 2355] }
+        ]
+      },
+      { 
+        name: "applyPlugin", 
+        complexity: 12, 
+        coverage: 78, 
+        category: "Plugins", 
+        isTested: true, 
+        lineNumber: 3456,
+        riskLevel: 'medium',
+        testCoverage: [
+          { testFile: "plugins.test.js", testCase: "should apply plugin correctly", coverageType: "unit", coveredLines: [3456, 3457, 3460] }
+        ]
+      },
+      { 
+        name: "resolveModule", 
+        complexity: 24, 
+        coverage: 0, 
+        category: "Runtime", 
+        isTested: false, 
+        lineNumber: 4567,
+        riskLevel: 'high',
+        testCoverage: []
+      }
     ]
   }
 ];
