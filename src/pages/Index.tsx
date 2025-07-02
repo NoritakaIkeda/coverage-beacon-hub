@@ -102,7 +102,7 @@ const Index = () => {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-slate-900">{highComplexityRepos}</div>
-              <p className="text-xs text-slate-600 mt-1">Repos with complexity >15</p>
+              <p className="text-xs text-slate-600 mt-1">Repos with complexity {">"}15</p>
             </CardContent>
           </Card>
         </div>
