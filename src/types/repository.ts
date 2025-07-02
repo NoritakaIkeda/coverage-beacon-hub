@@ -34,4 +34,22 @@ export interface FunctionData {
   category: string;
   isTested: boolean;
   lineNumber: number;
+  businessIntent?: string;
+  implementationNotes?: string;
+  testCoverage: TestCoverageInfo[];
+  branchCoverage?: BranchCoverageInfo[];
+  riskLevel: 'low' | 'medium' | 'high';
+}
+
+export interface TestCoverageInfo {
+  testFile: string;
+  testCase: string;
+  coverageType: 'unit' | 'integration' | 'e2e';
+  coveredLines: number[];
+}
+
+export interface BranchCoverageInfo {
+  condition: string;
+  isCovered: boolean;
+  testCase?: string;
 }

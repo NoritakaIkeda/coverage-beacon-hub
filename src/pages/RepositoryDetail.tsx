@@ -9,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { mockRepositories } from "@/data/mockData";
 import CoverageChart from "@/components/CoverageChart";
 import FunctionList from "@/components/FunctionList";
+import CodeAnalysis from "@/components/CodeAnalysis";
 
 const RepositoryDetail = () => {
   const { id } = useParams();
@@ -140,6 +141,7 @@ const RepositoryDetail = () => {
         <Tabs defaultValue="overview" className="space-y-6">
           <TabsList className="bg-white shadow-sm">
             <TabsTrigger value="overview">Overview</TabsTrigger>
+            <TabsTrigger value="analysis">Code Analysis</TabsTrigger>
             <TabsTrigger value="functions">Functions</TabsTrigger>
             <TabsTrigger value="categories">Categories</TabsTrigger>
           </TabsList>
@@ -183,6 +185,10 @@ const RepositoryDetail = () => {
                 </CardContent>
               </Card>
             </div>
+          </TabsContent>
+
+          <TabsContent value="analysis">
+            <CodeAnalysis functions={repository.functions} />
           </TabsContent>
 
           <TabsContent value="functions">
